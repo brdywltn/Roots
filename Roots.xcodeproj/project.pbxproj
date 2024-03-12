@@ -16,6 +16,7 @@
 		8BC120852BA0920E0099A105 /* RootsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC120842BA0920E0099A105 /* RootsTests.swift */; };
 		8BC1208F2BA0920E0099A105 /* RootsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1208E2BA0920E0099A105 /* RootsUITests.swift */; };
 		8BC120912BA0920E0099A105 /* RootsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC120902BA0920E0099A105 /* RootsUITestsLaunchTests.swift */; };
+		8BC1209E2BA0CAE50099A105 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1209D2BA0CAE50099A105 /* SplashView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		8BC1208A2BA0920E0099A105 /* RootsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RootsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC1208E2BA0920E0099A105 /* RootsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootsUITests.swift; sourceTree = "<group>"; };
 		8BC120902BA0920E0099A105 /* RootsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8BC1209D2BA0CAE50099A105 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				8BC120772BA0920E0099A105 /* Persistence.swift */,
 				8BC120792BA0920E0099A105 /* Roots.xcdatamodeld */,
 				8BC120742BA0920E0099A105 /* Preview Content */,
+				8BC1209D2BA0CAE50099A105 /* SplashView.swift */,
 			);
 			path = Roots;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			files = (
 				8BC120782BA0920E0099A105 /* Persistence.swift in Sources */,
 				8BC1207B2BA0920E0099A105 /* Roots.xcdatamodeld in Sources */,
+				8BC1209E2BA0CAE50099A105 /* SplashView.swift in Sources */,
 				8BC120712BA0920C0099A105 /* ContentView.swift in Sources */,
 				8BC1206F2BA0920C0099A105 /* RootsApp.swift in Sources */,
 			);

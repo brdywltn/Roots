@@ -9,10 +9,26 @@ import SwiftUI
 
 struct SplashView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Image(systemName: "leaf.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width:150, height: 150)
+                .foregroundColor(.green)
+            Text("Roots")
+                .font(.largeTitle)
+                .foregroundColor(.green)
+        }
+        .padding()
     }
 }
 
 #Preview {
     SplashView()
 }
+
+//struct SplashView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SplashView()
+//    }
+//}
