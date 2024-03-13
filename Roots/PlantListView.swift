@@ -9,67 +9,53 @@ import SwiftUI
 
 struct PlantListView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-     
-    var body: some View {
-            NavigationView {
-                List {
-                    ForEach(items) { item in
-                        NavigationLink {
-                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                        } label: {
-                            Text(item.timestamp!, formatter: itemFormatter)
-                        }
-                    }
-                    .onDelete(perform: deleteItems)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
-                    }
-                    ToolbarItem {
-                        Button(action: addItem) {
-                            Label("Add Item", systemImage: "plus")
-                        }
-                    }
-                }
-                Text("Select an item")
-            }
-    }
     
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Plant.nickname, ascending: true)],
+        animation: .default)
+    private var plants: FetchedResults<Plant>
+    
+    @State private var showingAddPlantView = false
+    
+    var body: some View {
+        NavigationView {
+            ScrollView  {
+                LazyVGrid(columns:[GridItem(.flexible()), GridItem(.flexible())], spacing:20) {
+                    ForEach(plants, id:\.self) { plant in
+                        NavigationLink(destination: PlantDetailView(plant:plant)) {
+                            Image(plant.image ?? "placeholder_image")
+                                .resizable()
+                                .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                                .frame(width:100, height:100)
+                                .clipped()
+                                .cornerRadius(8)
+                            Text(plant.nickname ?? "Unknown")
+                                .font(.caption)
+                        }
+                    }
+                }
+                .padding()
+            }
+            .navigationTitle("Plants")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {showingAddPlantView = true}) {
+                        Label("Add Plant", systemImage: "plus")
+                    }
+                    .sheet(isPresented: $showingAddPlantView) {
+                        AddPlantView().environment(\.managedObjectContext, self.viewContext)
+                    }
+                }
             }
         }
     }
+}
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+struct PlantDetailView: View {
+    var plant: Plant
+    
+    var body: some View {
+        Text(plant.nickname ?? "Unknown plant")
     }
 }
 
