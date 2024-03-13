@@ -18,6 +18,9 @@ struct AddPlantView: View {
     @State private var lastWateredDate: Date = Date()
     @State private var lastFedDate: Date = Date()
     
+    @State private var selectedImage: UIImage?
+    @State private var showingImagePicker = false
+    
     var body: some View {
         NavigationView {
             Form {
@@ -29,6 +32,12 @@ struct AddPlantView: View {
                     DatePicker("Last Fed", selection: $lastFedDate, displayedComponents: .date)
                 }
                 Section {
+                    Button("Add Image") {
+                        showingImagePicker = true
+                    }
+                    .sheet(isPresented: $showingImagePicker) {
+                        ImagePicker(selectedImage: $selectedImage)
+                    }
                     Button("Add Plant") {
                         addNewPlant()
                     }
@@ -51,6 +60,11 @@ struct AddPlantView: View {
             newPlant.lastFedDate = lastFedDate
             
             //image path
+            if let selectedImage = selectedImage {
+                if let imagePath = ImageStorage.saveImageToDocumentDirectory(selectedImage, plantId: UUID().uuidString) {
+                    newPlant.imagePath = imagePath
+                }
+            }
             
             do {
                 try viewContext.save()

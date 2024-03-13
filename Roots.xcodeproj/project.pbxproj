@@ -22,6 +22,7 @@
 		8BC120A52BA127E40099A105 /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC120A42BA127E40099A105 /* ProfilePageView.swift */; };
 		8BC120A72BA127F30099A105 /* SettingsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC120A62BA127F30099A105 /* SettingsPageView.swift */; };
 		8BC120B02BA1D69D0099A105 /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC120AF2BA1D69D0099A105 /* AddPlantView.swift */; };
+		8BC120B22BA1E9100099A105 /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC120B12BA1E9100099A105 /* ImageStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		8BC120A42BA127E40099A105 /* ProfilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageView.swift; sourceTree = "<group>"; };
 		8BC120A62BA127F30099A105 /* SettingsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageView.swift; sourceTree = "<group>"; };
 		8BC120AF2BA1D69D0099A105 /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
+		8BC120B12BA1E9100099A105 /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				8BC120A62BA127F30099A105 /* SettingsPageView.swift */,
 				8BC120A42BA127E40099A105 /* ProfilePageView.swift */,
 				8BC120A22BA127D00099A105 /* PlantListView.swift */,
+				8BC120B12BA1E9100099A105 /* ImageStorage.swift */,
 				8BC120AF2BA1D69D0099A105 /* AddPlantView.swift */,
 				8BC120A02BA127B60099A105 /* HomePageView.swift */,
 				8BC120772BA0920E0099A105 /* Persistence.swift */,
@@ -287,6 +290,7 @@
 				8BC120A52BA127E40099A105 /* ProfilePageView.swift in Sources */,
 				8BC1207B2BA0920E0099A105 /* Roots.xcdatamodeld in Sources */,
 				8BC1209E2BA0CAE50099A105 /* SplashView.swift in Sources */,
+				8BC120B22BA1E9100099A105 /* ImageStorage.swift in Sources */,
 				8BC120B02BA1D69D0099A105 /* AddPlantView.swift in Sources */,
 				8BC120A32BA127D00099A105 /* PlantListView.swift in Sources */,
 				8BC120A72BA127F30099A105 /* SettingsPageView.swift in Sources */,
