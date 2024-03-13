@@ -10,11 +10,24 @@ import SwiftUI
 @main
 struct RootsApp: App {
     let persistenceController = PersistenceController.shared
+    @State private var isActive: Bool = false   // Manage the splash screen visibility
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            if isActive {
+                ContentView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            } else {
+                SplashView()
+                    .onAppear() {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            withAnimation {
+                                self.isActive = true
+                            }
+                        }
+                    }
+            }
+            
         }
     }
 }
