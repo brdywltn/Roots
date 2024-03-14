@@ -16,48 +16,17 @@ struct PlantListView: View {
     private var plants: FetchedResults<Plant>
     
     @State private var showingAddPlantView = false
+    @State private var showingDelete = false
+ 
     
     var body: some View {
         NavigationView {
             ScrollView  {
                 LazyVGrid(columns:[GridItem(.flexible()), GridItem(.flexible())], spacing:20) {
                     ForEach(plants, id:\.self) { plant in
-                        NavigationLink(destination: PlantDetailView(plant:plant)) {
-                            VStack {
-                                Group {
-                                    if let imagePath = plant.imagePath, let uiImage = ImageStorage.loadImageFromDocumentDirectory(name: imagePath) {
-                                        Image(uiImage: uiImage)
-                                            .resizable()
-    //                                    .resizable()
-    //                                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-    //                                    .frame(width:100, height:100)
-    //                                    .clipped()
-    //                                    .cornerRadius(8)
-    //                                    .clipShape(RoundedRectangle(cornerRadius: 8))
-    //                                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.green, lineWidth:2))
-                                    } else {
-                                        Image(systemName: "leaf.fill")
-                                            .resizable()
-                                            .scaledToFit()
-    //                                    .resizable()
-    //                                    .scaledToFit()
-    //                                    .frame(width:100, height:100)
-    //                                    .padding()
-    //                                    .background(Color.white)
-    //                                    .clipShape(RoundedRectangle(cornerRadius: 8))
-    //                                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.green, lineWidth:2))
-                                    }
-                                }
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width:100, height:100)
-                                .clipped()
-                                .cornerRadius(8)
-                                .overlay(RoundedRectangle(cornerRadius:8).stroke(Color.green, lineWidth:2))
-                                .background(Color.white)
-                                    
-                                Text(plant.nickname ?? "Unknown")
-                                    .font(.caption)
-                                    .frame(width: 100)
+                        NavigationLink(destination: PlantDetailView(plant: plant)){
+                            PlantItemView(plant:plant, showDelete: $showingDelete) {
+                                deletePlant(plant)
                             }
                         }
                     }
@@ -66,9 +35,13 @@ struct PlantListView: View {
             }
             .navigationTitle("Your Plants")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+            
                     Button(action: {showingAddPlantView = true}) {
                         Label("Add Plant", systemImage: "plus")
+                    }
+                    Button(action: {showingDelete.toggle() }) {
+                        Image(systemName: showingDelete ? "xmark.circle" : "minus.circle")
                     }
                     .sheet(isPresented: $showingAddPlantView) {
                         AddPlantView().environment(\.managedObjectContext, self.viewContext)
@@ -77,15 +50,19 @@ struct PlantListView: View {
             }
         }
     }
-}
-
-struct PlantDetailView: View {
-    var plant: Plant
     
-    var body: some View {
-        Text(plant.nickname ?? "Unknown plant")
+    private func deletePlant(_ plant: Plant) {
+        viewContext.delete(plant)
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
+
+
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
@@ -123,9 +100,4 @@ struct ImagePicker: UIViewControllerRepresentable {
     PlantListView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+

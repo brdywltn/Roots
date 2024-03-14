@@ -53,6 +53,7 @@ struct AddPlantView: View {
     private func addNewPlant() {
         withAnimation {
             let newPlant = Plant(context: viewContext)
+            newPlant.id = UUID()
             newPlant.nickname = nickname
             newPlant.scientificName = scientificName
             newPlant.careInformation = careInformation
