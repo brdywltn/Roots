@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B3D431D2BB5C94B00125288 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D431C2BB5C94B00125288 /* DatePickerView.swift */; };
+		8B3D43252BC1D3E800125288 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D43242BC1D3E800125288 /* Extensions.swift */; };
+		8B3D432D2BC57AE600125288 /* PlantcareInformationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D432C2BC57AE600125288 /* PlantcareInformationService.swift */; };
+		8B3D432F2BC8554B00125288 /* PlantIdentification.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 8B3D432E2BC8554B00125288 /* PlantIdentification.mlpackage */; };
 		8BC1206F2BA0920C0099A105 /* RootsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1206E2BA0920C0099A105 /* RootsApp.swift */; };
 		8BC120712BA0920C0099A105 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC120702BA0920C0099A105 /* ContentView.swift */; };
 		8BC120732BA0920E0099A105 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BC120722BA0920E0099A105 /* Assets.xcassets */; };
@@ -25,6 +29,8 @@
 		8BC120B22BA1E9100099A105 /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC120B12BA1E9100099A105 /* ImageStorage.swift */; };
 		8BC120B42BA20BE70099A105 /* PlantItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC120B32BA20BE70099A105 /* PlantItemView.swift */; };
 		8BC120B62BA26EF40099A105 /* PlantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC120B52BA26EF40099A105 /* PlantDetailView.swift */; };
+		8BF0A5EA2BA4700F009FB866 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF0A5E92BA4700F009FB866 /* WeatherService.swift */; };
+		8BF0A5EC2BA47203009FB866 /* WeatherWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF0A5EB2BA47203009FB866 /* WeatherWidgetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B3D431C2BB5C94B00125288 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		8B3D43242BC1D3E800125288 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8B3D432C2BC57AE600125288 /* PlantcareInformationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantcareInformationService.swift; sourceTree = "<group>"; };
+		8B3D432E2BC8554B00125288 /* PlantIdentification.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = PlantIdentification.mlpackage; path = ../../../../PlantIdentification.mlpackage; sourceTree = "<group>"; };
 		8BC1206B2BA0920C0099A105 /* Roots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC1206E2BA0920C0099A105 /* RootsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootsApp.swift; sourceTree = "<group>"; };
 		8BC120702BA0920C0099A105 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +77,8 @@
 		8BC120B12BA1E9100099A105 /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 		8BC120B32BA20BE70099A105 /* PlantItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantItemView.swift; sourceTree = "<group>"; };
 		8BC120B52BA26EF40099A105 /* PlantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailView.swift; sourceTree = "<group>"; };
+		8BF0A5E92BA4700F009FB866 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		8BF0A5EB2BA47203009FB866 /* WeatherWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWidgetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,21 +129,27 @@
 		8BC1206D2BA0920C0099A105 /* Roots */ = {
 			isa = PBXGroup;
 			children = (
-				8BC1209F2BA0FC9D0099A105 /* Info.plist */,
-				8BC120702BA0920C0099A105 /* ContentView.swift */,
-				8BC120A62BA127F30099A105 /* SettingsPageView.swift */,
-				8BC120A42BA127E40099A105 /* ProfilePageView.swift */,
-				8BC120A22BA127D00099A105 /* PlantListView.swift */,
-				8BC120B52BA26EF40099A105 /* PlantDetailView.swift */,
-				8BC120B32BA20BE70099A105 /* PlantItemView.swift */,
-				8BC120B12BA1E9100099A105 /* ImageStorage.swift */,
-				8BC120AF2BA1D69D0099A105 /* AddPlantView.swift */,
-				8BC120A02BA127B60099A105 /* HomePageView.swift */,
-				8BC120772BA0920E0099A105 /* Persistence.swift */,
-				8BC120722BA0920E0099A105 /* Assets.xcassets */,
-				8BC1209D2BA0CAE50099A105 /* SplashView.swift */,
-				8BC120792BA0920E0099A105 /* Roots.xcdatamodeld */,
 				8BC1206E2BA0920C0099A105 /* RootsApp.swift */,
+				8BC120702BA0920C0099A105 /* ContentView.swift */,
+				8BC120A02BA127B60099A105 /* HomePageView.swift */,
+				8BF0A5EB2BA47203009FB866 /* WeatherWidgetView.swift */,
+				8BC120A22BA127D00099A105 /* PlantListView.swift */,
+				8BC120AF2BA1D69D0099A105 /* AddPlantView.swift */,
+				8BC120B32BA20BE70099A105 /* PlantItemView.swift */,
+				8BC120B52BA26EF40099A105 /* PlantDetailView.swift */,
+				8B3D431C2BB5C94B00125288 /* DatePickerView.swift */,
+				8BC120A42BA127E40099A105 /* ProfilePageView.swift */,
+				8BC120A62BA127F30099A105 /* SettingsPageView.swift */,
+				8B3D432E2BC8554B00125288 /* PlantIdentification.mlpackage */,
+				8BC1209D2BA0CAE50099A105 /* SplashView.swift */,
+				8BF0A5E92BA4700F009FB866 /* WeatherService.swift */,
+				8BC120B12BA1E9100099A105 /* ImageStorage.swift */,
+				8BC120772BA0920E0099A105 /* Persistence.swift */,
+				8B3D43242BC1D3E800125288 /* Extensions.swift */,
+				8B3D432C2BC57AE600125288 /* PlantcareInformationService.swift */,
+				8BC1209F2BA0FC9D0099A105 /* Info.plist */,
+				8BC120722BA0920E0099A105 /* Assets.xcassets */,
+				8BC120792BA0920E0099A105 /* Roots.xcdatamodeld */,
 				8BC120742BA0920E0099A105 /* Preview Content */,
 			);
 			path = Roots;
@@ -293,12 +311,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BC120782BA0920E0099A105 /* Persistence.swift in Sources */,
+				8B3D43252BC1D3E800125288 /* Extensions.swift in Sources */,
 				8BC120A52BA127E40099A105 /* ProfilePageView.swift in Sources */,
+				8B3D432D2BC57AE600125288 /* PlantcareInformationService.swift in Sources */,
+				8BF0A5EC2BA47203009FB866 /* WeatherWidgetView.swift in Sources */,
 				8BC1207B2BA0920E0099A105 /* Roots.xcdatamodeld in Sources */,
 				8BC120B42BA20BE70099A105 /* PlantItemView.swift in Sources */,
 				8BC1209E2BA0CAE50099A105 /* SplashView.swift in Sources */,
+				8B3D431D2BB5C94B00125288 /* DatePickerView.swift in Sources */,
 				8BC120B22BA1E9100099A105 /* ImageStorage.swift in Sources */,
+				8BF0A5EA2BA4700F009FB866 /* WeatherService.swift in Sources */,
 				8BC120B02BA1D69D0099A105 /* AddPlantView.swift in Sources */,
+				8B3D432F2BC8554B00125288 /* PlantIdentification.mlpackage in Sources */,
 				8BC120A32BA127D00099A105 /* PlantListView.swift in Sources */,
 				8BC120A72BA127F30099A105 /* SettingsPageView.swift in Sources */,
 				8BC120B62BA26EF40099A105 /* PlantDetailView.swift in Sources */,

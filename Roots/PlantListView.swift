@@ -22,23 +22,33 @@ struct PlantListView: View {
     var body: some View {
         NavigationView {
             ScrollView  {
-                LazyVGrid(columns:[GridItem(.flexible()), GridItem(.flexible())], spacing:20) {
+                HStack {
+                    Text("Your Plants")
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(Color.richGrey)
+                        .padding()
+                }
+                LazyVGrid(columns:[GridItem(.flexible()), GridItem(.flexible())]) {
                     ForEach(plants, id:\.self) { plant in
                         NavigationLink(destination: PlantDetailView(plant: plant)){
                             PlantItemView(plant:plant, showDelete: $showingDelete) {
                                 deletePlant(plant)
                             }
                         }
+                        .foregroundColor(Color.richGrey)
                     }
                 }
-                .padding()
             }
-            .navigationTitle("Your Plants")
+            .frame(maxWidth:.infinity, maxHeight: .infinity)
+            .background {
+                Color.softLimeGreen.ignoresSafeArea()
+            }
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
             
                     Button(action: {showingAddPlantView = true}) {
                         Label("Add Plant", systemImage: "plus")
+                            .foregroundColor(Color.richGrey)
                     }
                     Button(action: {showingDelete.toggle() }) {
                         Image(systemName: showingDelete ? "xmark.circle" : "minus.circle")
@@ -49,6 +59,7 @@ struct PlantListView: View {
                 }
             }
         }
+        
     }
     
     private func deletePlant(_ plant: Plant) {
@@ -65,32 +76,41 @@ struct PlantListView: View {
 
 
 struct ImagePicker: UIViewControllerRepresentable {
+    //save an image
     @Binding var selectedImage: UIImage?
     @Environment(\.presentationMode) var presentationMode
     
+    //view controller for picking an image
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
         return picker
     }
     
+    //required function
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
     
+    //create a coordinator to manage communication between SwiftUI and the image picker
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
+    //control the communication between swiftUI and image picker
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         var parent: ImagePicker
         
+        //bind to swiftUI
         init(_ parent: ImagePicker) {
             self.parent = parent
         }
         
+        //handle image selection
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any]) {
+            //extract the image and bind it to the contextual variable to save in coredata later
             if let image = info[.originalImage] as? UIImage {
                 parent.selectedImage = image
             }
+            //dismiss the picker
             parent.presentationMode.wrappedValue.dismiss()
         }
     }

@@ -17,10 +17,11 @@ struct RootsApp: App {
             if isActive {
                 ContentView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .background(Color.softLimeGreen.edgesIgnoringSafeArea(.all))
             } else {
                 SplashView()
                     .onAppear() {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             withAnimation {
                                 self.isActive = true
                             }
@@ -30,4 +31,5 @@ struct RootsApp: App {
             
         }
     }
+    
 }

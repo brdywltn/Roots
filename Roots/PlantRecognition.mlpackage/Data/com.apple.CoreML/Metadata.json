@@ -1,0 +1,11 @@
+{
+  "MLModelVersionStringKey" : "--",
+  "MLModelDescriptionKey" : "--",
+  "MLModelCreatorDefinedKey" : {
+    "com.github.apple.coremltools.version" : "7.1",
+    "com.github.apple.coremltools.source" : "tensorflow==2.15.0",
+    "classes" : "crassula-ovata, epipremnum, monstera-deliciosa, alocasia, ponytail-palm, begonia-rex, chlorophytum-comosum, phalaenopsis, ficus-elastica, tradescantia-fluminensis, zamioculcas, opuntia-microdasys, pelargonium-graveolens, peperomia-caperata, boston-fern, echeveria, pedilanthus, dracaena-trifasciata, kalanchoe, dieffenbachia, ficus-benjamina, aglaonema, croton, araucaria-heterophylla, pilea-peperomioides, haworthiopsis-attenuata, hypoestes-phyllostachya, schefflera, poinsettia, adenium, pachypodium-lamerei, mesembryanthemum-cordifolium, adiantum, bambusa, aloe-vera, pelargonium-x-domesticum, begonia, anthurium, curio-rowleyanus, euphorbiamilii, syngonium, amaryllis, pachira, spathiphyllum, pelargonium-hortorum, hedera-helix, thaumatophyllum-bipinnatifidum, verbena, fiddle-leaf, fatsia-japonica"
+  },
+  "MLModelAuthorKey" : "--",
+  "MLModelLicenseKey" : "--"
+}

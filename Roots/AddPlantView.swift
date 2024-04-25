@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreML
 
 struct AddPlantView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -20,6 +21,11 @@ struct AddPlantView: View {
     
     @State private var selectedImage: UIImage?
     @State private var showingImagePicker = false
+    @State private var identifiedSpecies: String = "Unknown"
+    @State private var showingGetCareInfoButton = false
+    @State private var showingPredictSpecies = false
+    
+    
     
     var body: some View {
         NavigationView {
@@ -27,17 +33,52 @@ struct AddPlantView: View {
                 Section(header: Text("Plant Details")) {
                     TextField("Nickname", text: $nickname)
                     TextField("Scientific Name", text: $scientificName)
-                    TextField("Care Information", text: $careInformation)
+                    TextField("Watering Information", text: $careInformation)
                     DatePicker("Last Watered", selection: $lastWateredDate, displayedComponents: .date)
                     DatePicker("Last Fed", selection: $lastFedDate, displayedComponents: .date)
                 }
                 Section {
                     Button("Add Image") {
                         showingImagePicker = true
+                        showingPredictSpecies = true
                     }
                     .sheet(isPresented: $showingImagePicker) {
                         ImagePicker(selectedImage: $selectedImage)
                     }
+                    if showingPredictSpecies {
+                        Button("Predict Species") {
+                            predictSpecies()
+                        }
+                    }
+                    if showingGetCareInfoButton {
+                        Button("Get Watering Information") {
+                            let service = PlantcareInformationService()
+                            service.getWateringScheduleInformation(forSpecies: identifiedSpecies) { result in
+                                DispatchQueue.main.async {
+                                    switch result {
+                                    case .success(let careInfo):
+                                        self.careInformation = careInfo
+                                        
+                                        if careInfo == "Minimum" {
+                                            self.careInformation = self.careInformation + " 💧"
+                                        } else if careInfo == "Frequent" {
+                                            self.careInformation = self.careInformation + " 💧💧💧"
+                                        } else if careInfo == "Average" {
+                                            self.careInformation = self.careInformation + "💧💧"
+                                        } else if careInfo == "None" {
+                                            self.careInformation = self.careInformation + ""
+                                        }
+                                    case .failure(let error):
+                                        print("Failed to fetch care information: \(error)")
+                                    }
+                                }
+                            }
+                        }
+                        if !careInformation.isEmpty {
+                            Text("Care Information: \(careInformation)")
+                        }
+                    }
+                    Text("Identified Species: \(identifiedSpecies)")
                     Button("Add Plant") {
                         addNewPlant()
                     }
@@ -74,6 +115,25 @@ struct AddPlantView: View {
                 print(error.localizedDescription)
                 //TODO: handle error properly
             }
+        }
+    }
+    
+    private func predictSpecies() {
+        guard let selectedImage = selectedImage else { return }
+        guard let model = try? PlantIdentification(configuration: MLModelConfiguration()) else {
+            print("Error loading model")
+            return
+        }
+        let resizedImage = selectedImage.resize(to: CGSize(width:224, height:224))
+        guard let buffer = resizedImage.pixelBuffer() else { return }
+        
+        do {
+            let prediction = try model.prediction(conv2d_input:buffer)
+            identifiedSpecies = prediction.classLabel
+            scientificName = prediction.classLabel
+            showingGetCareInfoButton = true
+        } catch {
+            print("Error during prediction: \(error)")
         }
     }
 }

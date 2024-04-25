@@ -17,22 +17,24 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
+                        .foregroundColor(Color.richGrey)
                 }
             PlantListView()
                 .tabItem {
                     Image(systemName: "leaf.fill")
                     Text("Plants")
+                        .foregroundColor(Color.richGrey)
                 }
             ProfilePageView()
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Profile")
+                        .foregroundColor(Color.richGrey)
                 }
-            SettingsPageView()
-                .tabItem {
-                    Image(systemName: "gear")
-                    Text("Settings")
-                }
+        }
+        .frame(maxWidth:.infinity, maxHeight: .infinity)
+        .background {
+            Color.softLimeGreen.ignoresSafeArea()
         }
     }
 }

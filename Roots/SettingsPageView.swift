@@ -9,7 +9,19 @@ import SwiftUI
 
 struct SettingsPageView: View {
     var body: some View {
-        Text("Settings Page!")
+        VStack {
+            Text("Settings")
+                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                .padding(.top)
+                .padding(.top)
+                .padding(.top)
+                .foregroundColor(Color.richGrey)
+            Spacer()
+        }
+        .frame(maxWidth:.infinity, maxHeight: .infinity)
+        .background {
+            Color.softLimeGreen.ignoresSafeArea()
+        }
     }
 }
 
